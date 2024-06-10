@@ -1,482 +1,220 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="css/leaflet.css">
-        <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
-        <link rel="stylesheet" href="css/L.Control.Locate.min.css">
-        <link rel="stylesheet" href="css/qgis2web.css">
-        <link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/MarkerCluster.css">
-        <link rel="stylesheet" href="css/MarkerCluster.Default.css">
-        <link rel="stylesheet" href="css/leaflet-search.css">
-        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
-        <link rel="stylesheet" href="css/leaflet-measure.css">
-        <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-        </style>
-        <title></title>
-    </head>
-    <body>
-        <div id="map">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Wawan QGIS</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    #hero {
+      background-image: url('assets/img/bni.jpeg'); /* Jika ingin menggunakan gambar sebagai latar belakang */
+      background-size: cover; /* Agar gambar menutupi seluruh latar belakang */
+      background-position: center; /* Menentukan posisi gambar latar */
+    }
+  </style>
+
+
+  </head>
+
+<body>
+
+ <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Builder</span></a></li>
+        <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Tentang Web</span></a></li>
+        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Peta</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <h1>Persebaran data Atm se Sumatera Barat</h1>
+      <p>Di <span class="typed" data-typed-items="Padang, Agam, Bukittinggi, Payakumbuh, Padang panjang, pariaman, Pasaman, Lima puluh kota, sijunjung, solok"></span></p>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Builder</h2>
+          <p>Bagian ini berisikan data diri dari pembuat website. Website ini dibuat untuk mempermudah masyarakat menemukan ATM BNI yang berada di Sumatera Barat.Sebagai seseorang yang tumbuh dan besar di Sumatera Barat, saya memiliki kepedulian tinggi terhadap kemajuan daerah ini. Dengan pemahaman mendalam tentang kebutuhan masyarakat akan akses perbankan yang mudah dan cepat, saya terinspirasi untuk menciptakan sebuah platform yang bisa membantu banyak orang. Oleh karena itu, saya membangun sebuah website yang berisikan data lengkap tentang ATM BNI yang ada di Sumatera Barat.</p>
         </div>
-        <script src="js/qgis2web_expressions.js"></script>
-        <script src="js/leaflet.js"></script>
-        <script src="js/L.Control.Layers.Tree.min.js"></script>
-        <script src="js/L.Control.Locate.min.js"></script>
-        <script src="js/leaflet.rotatedMarker.js"></script>
-        <script src="js/leaflet.pattern.js"></script>
-        <script src="js/leaflet-hash.js"></script>
-        <script src="js/Autolinker.min.js"></script>
-        <script src="js/rbush.min.js"></script>
-        <script src="js/labelgun.min.js"></script>
-        <script src="js/labels.js"></script>
-        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-        <script src="js/leaflet-measure.js"></script>
-        <script src="js/leaflet.markercluster.js"></script>
-        <script src="js/leaflet-search.js"></script>
-        <script src="data/sumbar_1.js"></script>
-        <script src="data/WawanFadhilah2521023persebaranATMBNI_2.js"></script>
-        <script src="data/titik_koordinat_3.js"></script>
-        <script>
-        var highlightLayer;
-        function highlightFeature(e) {
-            highlightLayer = e.target;
 
-            if (e.target.feature.geometry.type === 'LineString' || e.target.feature.geometry.type === 'MultiLineString') {
-              highlightLayer.setStyle({
-                color: '#ffff00',
-              });
-            } else {
-              highlightLayer.setStyle({
-                fillColor: '#ffff00',
-                fillOpacity: 1
-              });
+        <div class="row">
+          <div class="col-lg-4">
+            <img src="assets/img/wawan.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content">
+            <h3>Berikut adalah data diri pembuat website:</h3>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>15 September 2002</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Instagram :</strong> <span>@wan_moytod</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+162 821-7250-5190</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Lima puluh kota, Sumatera barat</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>22</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>wawanfadhilah00@gmail.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Major:</strong> <span>Pendidikan Teknik Informatika dan Komputer</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>FSchool:</strong> <span>UIN Bukittinggi</span></li>
+                </ul>
+              </div>
+            </div>
+            <p>
+              Melalui website ini, Saya berharap dapat memberikan kontribusi nyata bagi masyarakat Sumatera Barat dengan menyediakan informasi yang dapat diandalkan tentang persebaran ATM BNI. Diharapkan situs ini tidak hanya memudahkan pengguna dalam menemukan ATM terdekat, tetapi juga meningkatkan pemahaman mereka tentang jenis layanan perbankan yang tersedia, sehingga dapat memanfaatkan layanan tersebut dengan lebih efektif.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+   
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Tentang Web</h2>
+          <p>Website ini menyajikan berbagai data tentang persebaran ATM BNI di seluruh Sumatera Barat. ATM-ATM tersebut tersebar di berbagai kabupaten dan kota di provinsi ini, termasuk Padang, Agam, Bukittinggi, Payakumbuh, Padang Panjang, Pariaman, Pasaman, Lima Puluh Kota, Sijunjung, dan Solok. ATM BNI yang tersedia di wilayah ini terdiri dari dua tipe, yaitu ATM tunai dan ATM non-tunai, yang masing-masing menawarkan layanan berbeda sesuai dengan kebutuhan pengguna. Informasi ini bertujuan untuk memberikan kemudahan bagi masyarakat dalam menemukan lokasi ATM BNI terdekat serta memahami jenis layanan yang disediakan oleh setiap ATM.</p>
+        </div>
+
+        <div class="row">
+
+          <style>
+            .icon img {
+              max-width: 100px; /* Atur lebar maksimum gambar sesuai kebutuhan */
+              height: auto; /* Biarkan tinggi gambar disesuaikan secara proporsional */
             }
-            highlightLayer.openPopup();
-        }
-        var map = L.map('map', {
-            zoomControl:true, maxZoom:27, minZoom:2
-        }).fitBounds([[-2.647858981060849,96.36444437900104],[1.4572933778126396,103.57582868942214]]);
-        var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
-        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
-        function removeEmptyRowsFromPopupContent(content, feature) {
-         var tempDiv = document.createElement('div');
-         tempDiv.innerHTML = content;
-         var rows = tempDiv.querySelectorAll('tr');
-         for (var i = 0; i < rows.length; i++) {
-             var td = rows[i].querySelector('td.visible-with-data');
-             var key = td ? td.id : '';
-             if (td && td.classList.contains('visible-with-data') && feature.properties[key] == null) {
-                 rows[i].parentNode.removeChild(rows[i]);
-             }
-         }
-         return tempDiv.innerHTML;
-        }
-        document.querySelector(".leaflet-popup-pane").addEventListener("load", function(event) {
-          var tagName = event.target.tagName,
-            popup = map._popup;
-          // Also check if flag is already set.
-          if (tagName === "IMG" && popup && !popup._updated) {
-            popup._updated = true; // Set flag to prevent looping.
-            popup.update();
-          }
-        }, true);
-        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
-        var measureControl = new L.Control.Measure({
-            position: 'topleft',
-            primaryLengthUnit: 'feet',
-            secondaryLengthUnit: 'miles',
-            primaryAreaUnit: 'sqfeet',
-            secondaryAreaUnit: 'sqmiles'
-        });
-        measureControl.addTo(map);
-        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
-        .innerHTML = '';
-        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
-        .className += ' fas fa-ruler';
-        var bounds_group = new L.featureGroup([]);
-        function setBounds() {
-        }
-        map.createPane('pane_OSMStandard_0');
-        map.getPane('pane_OSMStandard_0').style.zIndex = 400;
-        var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            pane: 'pane_OSMStandard_0',
-            opacity: 1.0,
-            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
-            minZoom: 2,
-            maxZoom: 27,
-            minNativeZoom: 0,
-            maxNativeZoom: 19
-        });
-        layer_OSMStandard_0;
-        map.addLayer(layer_OSMStandard_0);
-        function pop_sumbar_1(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['METADATA'] !== null ? autolinker.link(feature.properties['METADATA'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['SRS_ID'] !== null ? autolinker.link(feature.properties['SRS_ID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">WADMKK</th>\
-                        <td>' + (feature.properties['WADMKK'] !== null ? autolinker.link(feature.properties['WADMKK'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">WADMPR</th>\
-                        <td>' + (feature.properties['WADMPR'] !== null ? autolinker.link(feature.properties['WADMPR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['atm_tunai'] !== null ? autolinker.link(feature.properties['atm_tunai'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['non_tunai'] !== null ? autolinker.link(feature.properties['non_tunai'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-            var popup = layer.getPopup();
-            var content = popup.getContent();
-            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
-            popup.setContent(updatedContent);
-        }
+          </style>
+          
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box iconbox-blue">
+              <div class="icon">
+                <img src="assets/img/tunai.jpeg" alt="ATM Tunai Icon">
+              </div>
+              <h4><a href="">ATM Tunai</a></h4>
+              <p>mesin penarikan uang otomatis yang memungkinkan pengguna untuk menarik uang tunai dari rekening bank mereka.</p>
+            </div>
+          </div>          
+          
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box iconbox-blue">
+              <div class="icon">
+                <img src="assets/img/non.jpeg" alt="ATM Tunai Icon">
+              </div>
+              <h4><a href="">ATM Non Tunai</a></h4>
+              <p>mesin yang memungkinkan pengguna untuk melakukan transaksi lain selain penarikan uang tunai, seperti cek saldo, transfer dana, pembayaran tagihan, pembelian pulsa, dan sebagainya.</p>
+            </div>
+          </div>          
 
-        function style_sumbar_1_0() {
-            return {
-                pane: 'pane_sumbar_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(196,60,57,1.0)',
-                interactive: true,
-            }
-        }
-        map.createPane('pane_sumbar_1');
-        map.getPane('pane_sumbar_1').style.zIndex = 401;
-        map.getPane('pane_sumbar_1').style['mix-blend-mode'] = 'normal';
-        var layer_sumbar_1 = new L.geoJson(json_sumbar_1, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_sumbar_1',
-            layerName: 'layer_sumbar_1',
-            pane: 'pane_sumbar_1',
-            onEachFeature: pop_sumbar_1,
-            style: style_sumbar_1_0,
-        });
-        bounds_group.addLayer(layer_sumbar_1);
-        map.addLayer(layer_sumbar_1);
-        function pop_WawanFadhilah2521023persebaranATMBNI_2(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NO'] !== null ? autolinker.link(feature.properties['NO'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NAMA ITEM DATA'] !== null ? autolinker.link(feature.properties['NAMA ITEM DATA'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['KELURAHAN'] !== null ? autolinker.link(feature.properties['KELURAHAN'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['KECAMATAN'] !== null ? autolinker.link(feature.properties['KECAMATAN'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['KABUPATEN/KOTA'] !== null ? autolinker.link(feature.properties['KABUPATEN/KOTA'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LATITUDE'] !== null ? autolinker.link(feature.properties['LATITUDE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LONGITUDE'] !== null ? autolinker.link(feature.properties['LONGITUDE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['TIPE ATM'] !== null ? autolinker.link(feature.properties['TIPE ATM'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ALAMAT'] !== null ? autolinker.link(feature.properties['ALAMAT'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['DATA ATRIBUT7'] !== null ? autolinker.link(feature.properties['DATA ATRIBUT7'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['DATA ATRIBUT8'] !== null ? autolinker.link(feature.properties['DATA ATRIBUT8'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['DATA ATRIBUT9'] !== null ? autolinker.link(feature.properties['DATA ATRIBUT9'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['PHOTO/GAMBAR'] !== null ? autolinker.link(feature.properties['PHOTO/GAMBAR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['field_15'] !== null ? autolinker.link(feature.properties['field_15'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['field_16'] !== null ? autolinker.link(feature.properties['field_16'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['field_17'] !== null ? autolinker.link(feature.properties['field_17'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['field_18'] !== null ? autolinker.link(feature.properties['field_18'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['field_19'] !== null ? autolinker.link(feature.properties['field_19'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-            var popup = layer.getPopup();
-            var content = popup.getContent();
-            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
-            popup.setContent(updatedContent);
-        }
+        </div>
 
-        function style_WawanFadhilah2521023persebaranATMBNI_2_0() {
-            return {
-                pane: 'pane_WawanFadhilah2521023persebaranATMBNI_2',
-                radius: 2.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(213,180,60,1.0)',
-                interactive: true,
-            }
-        }
-        map.createPane('pane_WawanFadhilah2521023persebaranATMBNI_2');
-        map.getPane('pane_WawanFadhilah2521023persebaranATMBNI_2').style.zIndex = 402;
-        map.getPane('pane_WawanFadhilah2521023persebaranATMBNI_2').style['mix-blend-mode'] = 'normal';
-        var layer_WawanFadhilah2521023persebaranATMBNI_2 = new L.geoJson(json_WawanFadhilah2521023persebaranATMBNI_2, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_WawanFadhilah2521023persebaranATMBNI_2',
-            layerName: 'layer_WawanFadhilah2521023persebaranATMBNI_2',
-            pane: 'pane_WawanFadhilah2521023persebaranATMBNI_2',
-            onEachFeature: pop_WawanFadhilah2521023persebaranATMBNI_2,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_WawanFadhilah2521023persebaranATMBNI_2_0(feature));
-            },
-        });
-        bounds_group.addLayer(layer_WawanFadhilah2521023persebaranATMBNI_2);
-        map.addLayer(layer_WawanFadhilah2521023persebaranATMBNI_2);
-        function pop_titik_koordinat_3(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NO'] !== null ? autolinker.link(feature.properties['NO'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">NAMA ITEM</th>\
-                        <td>' + (feature.properties['NAMA ITEM'] !== null ? autolinker.link(feature.properties['NAMA ITEM'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['KELURAHAN'] !== null ? autolinker.link(feature.properties['KELURAHAN'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['KECAMATAN'] !== null ? autolinker.link(feature.properties['KECAMATAN'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['KABUPATEN/'] !== null ? autolinker.link(feature.properties['KABUPATEN/'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">LATITUDE</th>\
-                        <td>' + (feature.properties['LATITUDE'] !== null ? autolinker.link(feature.properties['LATITUDE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">LONGITUDE</th>\
-                        <td>' + (feature.properties['LONGITUDE'] !== null ? autolinker.link(feature.properties['LONGITUDE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">TIPE ATM</th>\
-                        <td>' + (feature.properties['TIPE ATM'] !== null ? autolinker.link(feature.properties['TIPE ATM'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">ALAMAT</th>\
-                        <td>' + (feature.properties['ALAMAT'] !== null ? autolinker.link(feature.properties['ALAMAT'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">DATA ATRIB</th>\
-                        <td>' + (feature.properties['DATA ATRIB'] !== null ? autolinker.link(feature.properties['DATA ATRIB'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">FOTO</th>\
-                        <td>' + (feature.properties['FOTO'] !== null ? '<img src="images/' + String(feature.properties['FOTO']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-            var popup = layer.getPopup();
-            var content = popup.getContent();
-            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
-            popup.setContent(updatedContent);
-        }
+      </div>
+    </section><!-- End Services Section -->
 
-        function style_titik_koordinat_3_0() {
-            return {
-                pane: 'pane_titik_koordinat_3',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/titik_koordinat_3.svg',
-            iconSize: [19.0, 19.0]
-        }),
-                interactive: true,
-            }
-        }
-        map.createPane('pane_titik_koordinat_3');
-        map.getPane('pane_titik_koordinat_3').style.zIndex = 403;
-        map.getPane('pane_titik_koordinat_3').style['mix-blend-mode'] = 'normal';
-        var layer_titik_koordinat_3 = new L.geoJson(json_titik_koordinat_3, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_titik_koordinat_3',
-            layerName: 'layer_titik_koordinat_3',
-            pane: 'pane_titik_koordinat_3',
-            onEachFeature: pop_titik_koordinat_3,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.marker(latlng, style_titik_koordinat_3_0(feature));
-            },
-        });
-        var cluster_titik_koordinat_3 = new L.MarkerClusterGroup({showCoverageOnHover: false,
-            spiderfyDistanceMultiplier: 2});
-        cluster_titik_koordinat_3.addLayer(layer_titik_koordinat_3);
+   <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
 
-        bounds_group.addLayer(layer_titik_koordinat_3);
-        cluster_titik_koordinat_3.addTo(map);
-        var osmGeocoder = new L.Control.Geocoder({
-            collapsed: true,
-            position: 'topleft',
-            text: 'Search',
-            title: 'Testing'
-        }).addTo(map);
-        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
-        .className += ' fa fa-search';
-        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
-        .title += 'Search for a place';
-        var baseMaps = {};
-        var overlaysTree = [
-            {label: '<img src="legend/titik_koordinat_3.png" /> titik_koordinat', layer: cluster_titik_koordinat_3},
-            {label: '<img src="legend/WawanFadhilah2521023persebaranATMBNI_2.png" /> Wawan Fadhilah (2521023) persebaran ATM BNI', layer: layer_WawanFadhilah2521023persebaranATMBNI_2},
-            {label: '<img src="legend/sumbar_1.png" /> sumbar', layer: layer_sumbar_1},
-            {label: "OSM Standard", layer: layer_OSMStandard_0},]
-        var lay = L.control.layers.tree(null, overlaysTree,{
-            //namedToggle: true,
-            //selectorBack: false,
-            //closedSymbol: '&#8862; &#x1f5c0;',
-            //openedSymbol: '&#8863; &#x1f5c1;',
-            //collapseAll: 'Collapse all',
-            //expandAll: 'Expand all',
-            collapsed: true,
-        });
-        lay.addTo(map);
-        setBounds();
-        var i = 0;
-        layer_titik_koordinat_3.eachLayer(function(layer) {
-            var context = {
-                feature: layer.feature,
-                variables: {}
-            };
-            layer.bindTooltip((layer.feature.properties['NAMA ITEM'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['NAMA ITEM']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_titik_koordinat_3'});
-            labels.push(layer);
-            totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
-        });
-        map.addControl(new L.Control.Search({
-            layer: cluster_titik_koordinat_3,
-            initial: false,
-            hideMarkerOnCollapse: true,
-            propertyName: 'NAMA ITEM'}));
-        document.getElementsByClassName('search-button')[0].className +=
-         ' fa fa-binoculars';
-        resetLabels([layer_titik_koordinat_3]);
-        map.on("zoomend", function(){
-            resetLabels([layer_titik_koordinat_3]);
-        });
-        map.on("layeradd", function(){
-            resetLabels([layer_titik_koordinat_3]);
-        });
-        map.on("layerremove", function(){
-            resetLabels([layer_titik_koordinat_3]);
-        });
-        </script>
-    </body>
+        <div class="section-title">
+          <h2>Peta ATM BNI</h2>
+        </div>
+        <div>
+          <iframe src="gisweb.html" width="1200" height="500" frameborder="0"></iframe>
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <h3>Wawan Fadhilah</h3>
+      <p>Geographic Information System || Pendidikan Teknik Informatika dan Komputer</p>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>Wwnfdlh</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: [license-url] -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ -->
+        Designed by <a href="https://www.instagram.com/wan_moytod/">Wawan Fadhilah</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
 </html>
